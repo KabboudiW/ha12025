@@ -126,6 +126,23 @@ class CalculatorTest {
     //Fehler 1: Die Clear-Funktion löscht immer alle Einträge und setzt alles auf 0 zurück.
     // Bug fix Erstellen Sie einen Zähler für die Anzahl der Klicks auf die Löschtaste und stellen Sie sicher,
     // dass die Löschfunktion zwei Funktionen hat: eine zum Löschen der auf dem Bildschirm angezeigten Nummer und die zwischengespeicherte Werte zum Zurücksetzen auf 0
+    @Test
+    @DisplayName("should display the precedent result after Pressing an Operation key")
+    void testBinaryOperationKey() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(1);
+        calc.pressDigitKey(0);
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(1);
+        calc.pressDigitKey(0);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("x");
+        String expected = "20";
+        String actual = calc.readScreen();
 
+        assertEquals(expected, actual);
+    }
+    //Fehler:die zweite funktionalität von binaryoperationkey fehlt .. zwichen ergebniss wurde nicht gezeigt
 }
 
