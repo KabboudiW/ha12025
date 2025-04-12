@@ -104,6 +104,28 @@ class CalculatorTest {
             String actual = calc.readScreen();
             assertEquals(expected, actual);
         }
+    @Test
+    @DisplayName("should display the two functions of the Clear button and Clear Entry button ")
+    void testSaveClear(){
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(9);
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();//18
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(2);
+        calc.pressClearKey();//zwischengespeicherte Werte soll bleiben //18 x
+        calc.pressDigitKey(5);
+        calc.pressEqualsKey();
+
+        String expected = "90";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+    //Fehler 1: Die Clear-Funktion löscht immer alle Einträge und setzt alles auf 0 zurück.
+    // Bug fix Erstellen Sie einen Zähler für die Anzahl der Klicks auf die Löschtaste und stellen Sie sicher,
+    // dass die Löschfunktion zwei Funktionen hat: eine zum Löschen der auf dem Bildschirm angezeigten Nummer und die zwischengespeicherte Werte zum Zurücksetzen auf 0
 
 }
 
