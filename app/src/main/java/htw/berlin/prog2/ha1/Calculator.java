@@ -44,12 +44,27 @@ public class Calculator {
      * Werte sowie der aktuelle Operationsmodus zurückgesetzt, so dass der Rechner wieder
      * im Ursprungszustand ist.
      */
-    public void pressClearKey() {
+    public void pressClearKey1() {
         screen = "0";
         latestOperation = "";
         latestValue = 0.0;
     }
+/**
+ * BUG FIX pressClearKey
+ */
+int clearPressCount;
+    public void pressClearKey() {
 
+      clearPressCount++;
+
+      if (clearPressCount == 1) {
+          screen = "0"; // Clear the screen only
+      } else {
+          screen = "0";
+          latestOperation = "";
+           latestValue = 0.0;
+        clearPressCount = 0; // Reset the counter
+           }}
     /**
      * Empfängt den Wert einer gedrückten binären Operationstaste, also eine der vier Operationen
      * Addition, Substraktion, Division, oder Multiplikation, welche zwei Operanden benötigen.
@@ -62,8 +77,19 @@ public class Calculator {
     public void pressBinaryOperationKey(String operation)  {
         latestValue = Double.parseDouble(screen);
         latestOperation = operation;
-    }
 
+    }
+/**
+ * Bug Fix PressBinary
+ */
+public void pressBinaryOperationKey1(String operation)  {
+    if (!latestOperation.isEmpty()) {
+        pressEqualsKey();
+    }
+    latestValue = Double.parseDouble(screen);
+    latestOperation = operation;
+
+}
     /**
      * Empfängt den Wert einer gedrückten unären Operationstaste, also eine der drei Operationen
      * Quadratwurzel, Prozent, Inversion, welche nur einen Operanden benötigen.
