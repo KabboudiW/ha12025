@@ -91,7 +91,7 @@ class CalculatorTest {
 
     //TODO hier weitere Tests erstellen
     @Test
-        @DisplayName("Sollte das Ergebnis nach dem Hinzufügen von zwei positiven mehrstelligen Zahlen angezeigt")
+        @DisplayName("sollte das Ergebnis der Multiplikationsoperation zeigen")
         void testMultiply() {
             Calculator calc = new Calculator();
             calc.pressDigitKey(2);
@@ -105,14 +105,14 @@ class CalculatorTest {
             assertEquals(expected, actual);
         }
     @Test
-    @DisplayName("should display the two functions of the Clear button and Clear Entry button ")
+    @DisplayName("Clear Button soll die Zwischenergebnisse nicht löschen ")
     void testSaveClear(){
         Calculator calc = new Calculator();
         calc.pressDigitKey(9);
         calc.pressBinaryOperationKey("x");
         calc.pressDigitKey(2);
         calc.pressEqualsKey();//18
-        calc.pressBinaryOperationKey("x");
+        calc.pressBinaryOperationKey("x");//multipliziert
         calc.pressDigitKey(2);
         calc.pressClearKey();//zwischengespeicherte Werte soll bleiben //18 x
         calc.pressDigitKey(5);
@@ -127,7 +127,7 @@ class CalculatorTest {
     // Bug fix Erstellen Sie einen Zähler für die Anzahl der Klicks auf die Löschtaste und stellen Sie sicher,
     // dass die Löschfunktion zwei Funktionen hat: eine zum Löschen der auf dem Bildschirm angezeigten Nummer und die zwischengespeicherte Werte zum Zurücksetzen auf 0
     @Test
-    @DisplayName("should display the precedent result after Pressing an Operation key")
+    @DisplayName("sollte das aktuelle Zwischenergebnis nach dem Drücken einer Operationstaste anzeigen")
     void testBinaryOperationKey() {
         Calculator calc = new Calculator();
         calc.pressDigitKey(1);
@@ -143,6 +143,6 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
-    //Fehler:die zweite funktionalität von binaryoperationkey fehlt .. zwichen ergebniss wurde nicht gezeigt
+    //Fehler:die zweite funktionalität von Binaryoperationkey fehlt .. zwichen Ergebniss wurde nicht gezeigt
 }
 

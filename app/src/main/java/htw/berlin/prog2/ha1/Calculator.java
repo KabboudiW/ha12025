@@ -55,10 +55,10 @@ public class Calculator {
 int clearPressCount;
     public void pressClearKey() {
 
-      clearPressCount++;
+      clearPressCount++;//Zähler
 
       if (clearPressCount == 1) {
-          screen = "0"; // Clear the screen only
+          screen = "0";// Nur den Bildschirm löschen
       } else {
           screen = "0";
           latestOperation = "";
@@ -74,7 +74,7 @@ int clearPressCount;
      * auf dem Bildschirm angezeigt. Falls hierbei eine Division durch Null auftritt, wird "Error" angezeigt.
      * @param operation "+" für Addition, "-" für Substraktion, "x" für Multiplikation, "/" für Division
      */
-    public void pressBinaryOperationKey(String operation)  {
+    public void pressBinaryOperationKey1(String operation)  {
         latestValue = Double.parseDouble(screen);
         latestOperation = operation;
 
@@ -82,7 +82,7 @@ int clearPressCount;
 /**
  * Bug Fix PressBinary
  */
-public void pressBinaryOperationKey1(String operation)  {
+public void pressBinaryOperationKey(String operation)  {
     if (!latestOperation.isEmpty()) {
         pressEqualsKey();
     }
@@ -151,6 +151,7 @@ public void pressBinaryOperationKey1(String operation)  {
             case "/" -> latestValue / Double.parseDouble(screen);
             default -> throw new IllegalArgumentException();
         };
+        latestOperation= "";
         screen = Double.toString(result);
         if(screen.equals("Infinity")) screen = "Error";
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
